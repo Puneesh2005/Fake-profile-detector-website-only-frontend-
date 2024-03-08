@@ -264,14 +264,6 @@
         <h1>Fake Profile Detector</h1>
     </header>
 
-    <div id="navbar">
-        <a href="#submit-report">Submit Report</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#sample-reports">Sample Reports</a>
-        <a href="#testimonial">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-    </div>
 
     <section id="submit-report">
         <form id="reportForm" onsubmit="return validateForm()">
@@ -338,7 +330,7 @@
     <section id="interactive-counter">
         <h2>Join Millions of Users!</h2>
         <p>Be part of our community in the fight against fake profiles.</p>
-        <p>Users Registered: <span id="user-counter">0</span></p>
+        <p>Users Registered: <span id="user-counter">1 Million</span></p>
     </section>
 
     <section id="contact-form">
@@ -446,4 +438,55 @@
     </script>
 </body>
 
+<body>
+    <header>
+        <h1>Fake Profile Detector</h1>
+    </header>
+
+    <div id="navbar">
+        <a href="LOGIN.html" id="loginBtn">Login</a>
+    </div>
+
+    <section id="login-section" style="display: none;">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return loginUser()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+            <button type="submit">Help</button>
+        </form>
+    </section>
+
+<body>
+    <header>
+        <h1>Fake Profile Detector</h1>
+    </header>
+
+    <div id="navbar">
+        <a href="LOGIN.html" id="loginBtn">Login</a>
+        <a href="SIGNUP.html" id="signupBtn">Signup</a>
+        <a href="HELP.html" id="helpBtn">Help</a>
+    </div>
+
+    <section id="login-section" style="display: none;">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return loginUser()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section id="signup-section" style="display: none;">
+        <h2>Signup</h2>
+    </section>
+    
 </html>
