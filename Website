@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Profile Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a192f;
+            color: #a8b2d1;
+            line-height: 1.6;
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        header {
+            background-color: #1b2735;
+            color: #66fcf1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin: 50px 30px;
+            padding: 30px;
+            background-color: #1b2735;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        h2, h3 {
+            color: #66fcf1;
+        }
+
+        p {
+            color: #c5c6c7;
+        }
+
+        form {
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #c5c6c7;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            box-sizing: border-box;
+            border: 1px solid #66fcf1;
+            border-radius: 4px;
+            transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            color: #0b0c10;
+            background-color: #1f2833;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #45a29e;
+            color: #c5c6c7;
+            background-color: #0b0c10;
+        }
+
+        button {
+            background-color: #45a29e;
+            color: #0b0c10;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #66fcf1;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1b2735;
+            color: #66fcf1;
+        }
+
+        #navbar {
+            background-color: #1b2735;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        #navbar a {
+            color: #66fcf1;
+            margin: 0 15px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #navbar a:hover {
+            color: #45a29e;
+        }
+
+        #navbar a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #45a29e;
+        }
+
+        #safety-tips,
+        #interactive-counter,
+        #latest-news,
+        #about,
+        #contact-info {
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #safety-tips,
+        #latest-news,
+        #about,
+        #contact-info {
+            background-color: #30475e;
+        }
+
+        #safety-tips h2,
+        #latest-news h2,
+        #about h2,
+        #contact-info h2 {
+            color: #45a29e;
+        }
+
+        #safety-tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #safety-tips li {
+            margin-bottom: 10px;
+        }
+
+        #interactive-counter,
+        #contact-form {
+            text-align: center;
+            color: #66fcf1;
+        }
+
+        #interactive-counter p {
+            margin-bottom: 15px;
+        }
+
+        #interactive-counter span {
+            color: #45a29e;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .news-item,
+        .testimonial {
+            margin-bottom: 20px;
+        }
+
+        .news-item h3,
+        .testimonial p {
+            color: #66fcf1;
+        }
+
+        .news-item p,
+        .testimonial p {
+            color: #c5c6c7;
+        }
+
+        .news-item a {
+            color: #45a29e;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .news-item a:hover {
+            color: #66fcf1;
+        }
+
+        .news-item:last-child {
+            margin-bottom: 0;
+        }
+
+        #about img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        #new-section {
+            margin-top: 50px;
+            background-color: #30475e;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #new-section h2 {
+            color: #45a29e;
+        }
+
+        #new-section p {
+            color: #c5c6c7;
+        }
+
+        #new-section img {
+            width: 80%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        #new-section .animated-text {
+            color: #45a29e;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #new-section .animated-text span {
+            display: inline-block;
+            transform-origin: 50% 50%;
+            transform: scale(1, 1);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #new-section:hover .animated-text span {
+            transform: scale(1.2, 1.2);
+        }
+    </style>
+</head
+
+>
+
+<body>
+    <header>
+        <h1>Fake Profile Detector</h1>
+    </header>
+
+    <div id="navbar">
+        <a href="#submit-report">Submit Report</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#sample-reports">Sample Reports</a>
+        <a href="#testimonial">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="submit-report">
+        <form id="reportForm" onsubmit="return validateForm()">
+            <label for="profileLink">Profile Link:</label>
+            <input type="text" id="profileLink" name="profileLink" placeholder="Enter the link to the profile" required>
+
+            <label for="reason">Reason for Reporting:</label>
+            <textarea id="reason" name="reason" placeholder="Describe why you suspect this is a fake profile" required></textarea>
+
+            <button type="submit" id="submitBtn">Submit Report</button>
+            <p id="submissionStatus"></p>
+        </form>
+    </section>
+
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p>1. Enter the link to the profile you suspect is fake.</p>
+        <p>2. Provide a detailed reason for your suspicion.</p>
+        <p>3. Click on the "Submit Report" button.</p>
+        <p>Our dedicated team will review the reports and take appropriate actions to ensure the authenticity of social media profiles.</p>
+    </section>
+
+    <section id="sample-reports">
+        <h2>Sample Reports</h2>
+        <div class="sample-report">
+            <h3>Report #1</h3>
+            <p>This profile is using a celebrity photo, and the information provided seems inconsistent.</p>
+        </div>
+        <div class="sample-report">
+            <h3>Report #2</h3>
+            <p>Suspicious behavior observed, such as multiple friend requests sent within a short time frame.</p>
+        </div>
+    </section>
+
+    <section id="testimonial">
+        <h2>Testimonials</h2>
+        <div class="testimonial">
+            <p>"Fake Profile Detector helped me identify and report a scam profile. The response was quick, and the profile was taken down. Thank you!"</p>
+        </div>
+        <div class="testimonial">
+            <p>"Easy to use, and the community aspect makes me feel like I'm contributing to a safer online space. Highly recommend!"</p>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <h3>Q: How can I be sure a profile is fake?</h3>
+        <p>A: Look for suspicious behavior, fake profile pictures, and inconsistent information on the profile.</p>
+
+        <h3>Q: What happens after I submit a report?</h3>
+        <p>A: Our team reviews each report and takes appropriate actions, which may include removing the reported profile.</p>
+    </section>
+
+    <section id="safety-tips">
+        <h2>Online Safety Tips</h2>
+        <ul>
+            <li>Use a strong and unique password for each of your online accounts.</li>
+            <li>Enable two-factor authentication whenever possible.</li>
+            <li>Avoid clicking on suspicious links or downloading files from unknown sources.</li>
+            <li>Regularly update your device's operating system and applications.</li>
+        </ul>
+    </section>
+
+    <section id="interactive-counter">
+        <h2>Join Millions of Users!</h2>
+        <p>Be part of our community in the fight against fake profiles.</p>
+        <p>Users Registered: <span id="user-counter">0</span></p>
+    </section>
+
+    <section id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return submitContactForm()">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Type your message here" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="latest-news">
+        <h2>Latest News</h2>
+        <div class="news-item">
+            <h3>New Feature: Enhanced Reporting System</h3>
+            <p>We've upgraded our reporting system to provide you with a better experience. Try it out today!</p>
+        </div>
+
+        <div class="news-item">
+            <h3>Community Outreach Event</h3>
+            <p>Join us at our upcoming event to discuss online safety and fake profile detection. Details coming soon!</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to Fake Profile Detector, your trusted platform for reporting and identifying fake social media profiles. Our mission is to create a secure online environment by allowing users to report suspicious activities.</p>
+    </section>
+
+    <section id="new-section">
+        <h2>Explore New Content</h2>
+        <p>Discover the latest updates and exciting features on Fake Profile Detector. Stay tuned for more!</p>
+        <img src="images.jpeg" alt="New Content">
+        <div class="animated-text">
+            <span>Fresh</span>
+            <span>Exciting</span>
+            <span>Informative</span>
+        </div>
+    </section>
+
+    <section id="contact-info">
+        <h2>Contact Information</h2>
+        <p>Email: puneeshhingorani@gmail.com</p>
+        <p>Phone: 7891408828</p>
+        <p>Address: Lovely Professional University</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fake Profile Detector. All rights reserved.</p>
+        <p>Made By Puneesh, Kunal, Satyam, and Priyanshu</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('#navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        let userCounter = 0;
+
+        function incrementUserCounter() {
+            userCounter++;
+            document.getElementById('user-counter').innerText = userCounter;
+        }
+
+        const form = document.getElementById('reportForm');
+        const submissionStatus = document.getElementById('submissionStatus');
+
+        form.addEventListener('submit', function
+
+ (event) {
+            event.preventDefault();
+            submissionStatus.innerText = 'Report submitted successfully!';
+            form.reset();
+            setTimeout(function () {
+                submissionStatus.innerText = '';
+            }, 3000);
+        });
+
+        function submitContactForm() {
+            alert("Message sent! We'll get back to you soon.");
+            return false;
+        }
+
+        const body = document.querySelector('body');
+        const colors = ['#45a29e', '#1b2735', '#0a192f', '#0b0c10'];
+
+        function changeBackgroundColor() {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            body.style.backgroundColor = randomColor;
+        }
+
+        setInterval(changeBackgroundColor, 5000);
+    </script>
+</body>
+
+</html>
